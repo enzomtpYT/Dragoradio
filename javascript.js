@@ -26,6 +26,7 @@ async function np() {
       }
     });
     np.open("GET", "http://enzomtp.dragonia-pvp.fr/Assets/Radio/np.php");
+    np.setRequestHeader("cache-control", "no-cache");
     np.send(null);
 
     let ctitle = npjson.CurrentTrack.Title;
