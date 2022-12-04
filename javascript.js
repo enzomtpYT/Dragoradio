@@ -18,8 +18,15 @@ radiourl = "http://enzomtp.dragonia-pvp.fr:8000/a.mp3"
 //get the now playing / next playing
 
 async function np() {
-
-    npjson = await (await fetch("http://enzomtp.dragonia-pvp.fr/Assets/Radio/np.php")).json();
+    var np = new XMLHttpRequest();
+    np.withCredentials = true;
+    np.addEventListener("readystatechange", function () {
+      if (this.readyState === 4) {
+        npjson = JSON.parse(this.responseText);
+      }
+    });
+    np.open("GET", "http://enzomtp.dragonia-pvp.fr/Assets/Radio/np.php");
+    np.send(null);
 
     let ctitle = npjson.CurrentTrack.Title;
 
@@ -38,20 +45,20 @@ async function np() {
     document.getElementById("nexttitle").innerHTML = ntitle;
 }
 
-//get stats from the url
-async function Stats() {
-    let statsjson = await (await fetch("http://enzomtp.dragonia-pvp.fr/Assets/Radio/Stats.php")).json()
+// //get stats from the url
+// async function Stats() {
+//     let statsjson = await (await fetch("http://enzomtp.dragonia-pvp.fr/Assets/Radio/Stats.php")).json()
 
-    let uptime = statsjson.streamuptime;
+//     let uptime = statsjson.streamuptime;
 
-    var hours = Math.floor(uptime / 60 / 60);
+//     var hours = Math.floor(uptime / 60 / 60);
 
-    var minutes = Math.floor(uptime / 60) - hours * 60;
+//     var minutes = Math.floor(uptime / 60) - hours * 60;
 
-    var seconds = uptime % 60;
+//     var seconds = uptime % 60;
 
-    // $("#time").html(hours + "h" + minutes + "m" + seconds + "s");
-}
+//     // $("#time").html(hours + "h" + minutes + "m" + seconds + "s");
+// }
 
 function progressbar() {
     let duration = npjson.CurrentTrack.Duration;
@@ -77,8 +84,6 @@ function progressbar() {
     document.getElementById("endt").innerHTML = twochar(udhours) + ":" + twochar(udminutes) + ":" + twochar(udseconds);
 
     document.getElementById("progressbarfill").style.width = prcnt+"%";
-
-    console.log(prcnt);
 
     if (prcnt >= 90) {
         nextmd.hidden = false
