@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html class="no-js">
+
+<head>
+    <meta charset="utf-8">
+    <title>Dragoradio</title>
+    <meta property="og:title" content="Dragoradio" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="http://enzomtp.dragonia-pvp.fr/Radio/beta/" />
+    <meta property="og:image" content="http://enzomtp.dragonia-pvp.fr/Radio/beta/favicon.ico" />
+    <meta property="og:description" content="Dragoradio : Phonk | Otacore | G-House | Electro | Edm | Rap | OST | Dance | Trap">
+    <meta property="description" content="Dragoradio : Phonk | Otacore | G-House | Electro | Edm | Rap | OST | Dance | Trap">
+    <meta name="theme-color" content="#4c175a">
+    <meta name="description" content="">
+    <link rel="stylesheet" href="./custom.css">
+    <script defer src="./javascript.js"></script>
+</head>
+<body>
+    <audio id="player">
+        <source id="radio" src="" type="audio/mp3">
+    </audio>
+    <div id="nextmd" class="nextmd" style="right: 0%;">
+        <div class="nextinfos">
+            <div class="nextthumbnail">
+                <img id="nextcover" class="nextcover"></img>
+            </div>
+            <div class="nexttitleartist">
+                <p class="nextartist" id="nextartist">Artist</p>
+                <p class="nexttitle" id="nexttitle">Title</p>
+            </div>
+        </div>
+    </div>
+    <div class="main centered-element">
+        <div class="infos">
+            <div class="thumbnail">
+                <input type="button" class="playpause" id="playpause" style="background-image: url('https://cdn.discordapp.com/attachments/1046914734026399775/1048723034841817098/Nouveau_projet.svg');"></input>
+                <img id="cover" class="cover"></img>
+            </div>
+            <div class="titleartist">
+                <p class="artist" id="artist">Artist</p>
+                <p class="title" id="title">Title</p>
+            </div>
+        </div>
+        <div class="progressvol">
+            <div class="progressbar">
+                <div class="progressbar-fill" id="progressbarfill"></div>
+            </div>
+            <div class="time">
+                <p class="currentt" id="currentt">00h00m00s</p>
+                <div class="vol">
+                    <input type="range" min="0" max="100" value="20" class="slider" id="slider">
+                </div>
+                <p class="endt" id="endt">00h00m00s</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
