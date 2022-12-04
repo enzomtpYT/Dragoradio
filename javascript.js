@@ -22,6 +22,7 @@ async function np() {
     np.withCredentials = true;
     np.addEventListener("readystatechange", function () {
       if (this.readyState === 4) {
+        console.log(this.responseText)
         npjson = JSON.parse(this.responseText);
       }
     });
@@ -141,13 +142,13 @@ slider.oninput = function() {
     player.volume = this.value/100;
 }
 
+
 // Stats();
 np();
-
-setTimeout(function () {
+setTimeout(function (){
     progressbar();
     cover();
-}, 50);
+}, 10);
 
 setInterval(function () {
     np();
