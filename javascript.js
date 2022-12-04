@@ -13,7 +13,7 @@ nextmd = document.getElementById("nextmd")
 radio = document.getElementById("radio")
 player.volume = 0.2;
 isplayed = false;
-radiourl = "http://enzomtp.dragonia-pvp.fr:8000/a.mp3"
+radiourl = "https://share.dragonia-pvp.fr:8000/a.mp3"
 
 //get the now playing / next playing
 
@@ -22,15 +22,12 @@ async function np() {
     np.withCredentials = true;
     np.addEventListener("readystatechange", function () {
       if (this.readyState === 4) {
-        console.log(this.responseText)
+        // console.log(this.responseText)
         npjson = JSON.parse(this.responseText);
       }
     });
-    np.open("GET", "http://enzomtp.dragonia-pvp.fr/Assets/Radio/np.php");
+    np.open("GET", "https://share.dragonia-pvp.fr/Assets/Radio/np.php");
     np.setRequestHeader("cache-control", "no-cache");
-    np.setRequestHeader("Referer",window.location['href']);
-    np.setRequestHeader("Origin",window.location['origin']);
-    np.setRequestHeader("Host",window.location['host']);
     np.send(null);
 
     let ctitle = npjson.CurrentTrack.Title;
@@ -52,7 +49,7 @@ async function np() {
 
 // //get stats from the url
 // async function Stats() {
-//     let statsjson = await (await fetch("http://enzomtp.dragonia-pvp.fr/Assets/Radio/Stats.php")).json()
+//     let statsjson = await (await fetch("https://share.dragonia-pvp.fr/Assets/Radio/np.php")).json()
 
 //     let uptime = statsjson.streamuptime;
 
@@ -110,17 +107,17 @@ function cover() {
 
     setTimeout(function () {
         if (npjson.CurrentTrack.AlbumArt == "no_cover_image.jpg") {
-            aart.src = "http://enzomtp.dragonia-pvp.fr/Assets/Radio/dcover.png";
+            aart.src = "https://share.dragonia-pvp.fr/Assets/Radio/dcover.png";
         } else {
-            aart.src = "http://enzomtp.dragonia-pvp.fr/Assets/Album-Art/" + covers;
+            aart.src = "https://share.dragonia-pvp.fr/Assets/Album-Art/" + covers;
         }
     }, 50);
 
     setTimeout(function () {
         if (npjson.Playlist[0].AlbumArt == "no_cover_image.jpg") {
-            naart.src = "/Assets/Radio/dcover.png";
+            naart.src = "https://share.dragonia-pvp.fr/Assets/Radio/dcover.png";
         } else {
-            naart.src = "/Assets/Album-Art/" + ncovers;
+            naart.src = "https://share.dragonia-pvp.fr/Assets/Album-Art/" + ncovers;
         }
     }, 50);
 }
